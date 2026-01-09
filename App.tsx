@@ -4,6 +4,7 @@ import { HomeView } from './views/HomeView';
 import { ReplyWizardView } from './views/ReplyWizardView';
 import { ProfileRoastView } from './views/ProfileRoastView';
 import { ChatView } from './views/ChatView';
+import { MentorCommunityView } from './views/MentorCommunityView';
 import { AppView } from './types';
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         return <ProfileRoastView />;
       case AppView.CHAT:
         return <ChatView />;
+      case AppView.MENTOR_COMMUNITY:
+        return <MentorCommunityView />;
       default:
         return <HomeView onNavigate={setCurrentView} />;
     }

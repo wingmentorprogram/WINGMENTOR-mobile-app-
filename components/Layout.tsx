@@ -34,8 +34,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
             label="Tools" 
           />
            <NavButton 
-            active={currentView === AppView.CHAT} 
-            onClick={() => onNavigate(AppView.CHAT)} 
+            active={currentView === AppView.MENTOR_COMMUNITY} 
+            onClick={() => onNavigate(AppView.MENTOR_COMMUNITY)} 
             icon={<MessageCircle size={24} />} 
             label="Mentor" 
           />

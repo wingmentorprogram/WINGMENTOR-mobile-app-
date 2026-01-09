@@ -3,6 +3,7 @@ export enum AppView {
   INTERVIEW_PREP = 'INTERVIEW_PREP',
   RESUME_REVIEW = 'RESUME_REVIEW',
   CHAT = 'CHAT',
+  MENTOR_COMMUNITY = 'MENTOR_COMMUNITY',
 }
 
 export enum MessageRole {
