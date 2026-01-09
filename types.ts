@@ -4,6 +4,7 @@ export enum AppView {
   RESUME_REVIEW = 'RESUME_REVIEW',
   CHAT = 'CHAT',
   MENTOR_COMMUNITY = 'MENTOR_COMMUNITY',
+  EXAM_TERMINAL = 'EXAM_TERMINAL',
 }
 
 export enum MessageRole {

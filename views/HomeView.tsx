@@ -30,7 +30,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <AppCard 
             image="https://lh3.googleusercontent.com/d/11j7ZHv874EBZZ6O36etvuHC6rRWWm8kF"
             title="Exam Terminal"
-            onClick={() => onNavigate(AppView.INTERVIEW_PREP)}
+            onClick={() => onNavigate(AppView.EXAM_TERMINAL)}
           />
 
           <AppCard 
@@ -113,15 +113,33 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 interface AppCardProps {
   image: string;
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
+  href?: string;
   imgClassName?: string;
 }
 
-const AppCard: React.FC<AppCardProps> = ({ image, title, onClick, imgClassName }) => (
-  <button 
-    onClick={onClick}
-    className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 group bg-white dark:bg-slate-900"
-  >
-    <img src={image} alt={title} className={`w-full h-full object-cover ${imgClassName || ''} dark:opacity-90`} />
-  </button>
-);
+const AppCard: React.FC<AppCardProps> = ({ image, title, onClick, href, imgClassName }) => {
+  const commonClasses = "relative w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 group bg-white dark:bg-slate-900 block";
+
+  if (href) {
+    return (
+      <a 
+        href={href} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className={commonClasses}
+      >
+        <img src={image} alt={title} className={`w-full h-full object-cover ${imgClassName || ''} dark:opacity-90`} />
+      </a>
+    );
+  }
+
+  return (
+    <button 
+      onClick={onClick}
+      className={commonClasses}
+    >
+      <img src={image} alt={title} className={`w-full h-full object-cover ${imgClassName || ''} dark:opacity-90`} />
+    </button>
+  );
+};

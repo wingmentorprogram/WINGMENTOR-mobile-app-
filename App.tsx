@@ -5,6 +5,7 @@ import { ReplyWizardView } from './views/ReplyWizardView';
 import { ProfileRoastView } from './views/ProfileRoastView';
 import { ChatView } from './views/ChatView';
 import { MentorCommunityView } from './views/MentorCommunityView';
+import { ExamTerminalView } from './views/ExamTerminalView';
 import { AppView } from './types';
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
         return <ChatView />;
       case AppView.MENTOR_COMMUNITY:
         return <MentorCommunityView />;
+      case AppView.EXAM_TERMINAL:
+        return <ExamTerminalView />;
       default:
         return <HomeView onNavigate={setCurrentView} />;
     }
