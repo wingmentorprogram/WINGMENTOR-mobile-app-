@@ -5,7 +5,7 @@ export const ExamTerminalView: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="h-full w-full relative bg-white dark:bg-slate-900">
+    <div className="absolute inset-0 w-full h-full bg-white dark:bg-slate-900">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-slate-50 dark:bg-slate-950 z-20">
           <div className="flex flex-col items-center gap-3 animate-pulse">
