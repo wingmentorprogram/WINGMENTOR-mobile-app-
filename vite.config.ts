@@ -14,6 +14,8 @@ export default defineConfig(({ mode }) => {
     define: {
       // Explicitly substitute process.env.API_KEY with the string value from the environment
       'process.env.API_KEY': JSON.stringify(env.API_KEY),
+      // Polyfill process.env to an empty object to prevent "process is not defined" errors
+      'process.env': {}, 
     },
   };
 });
