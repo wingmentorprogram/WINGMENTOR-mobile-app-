@@ -12,11 +12,8 @@ export default defineConfig(({ mode }) => {
       outDir: 'dist',
     },
     define: {
-      // By default, Vite doesn't expose env vars not starting with VITE_
-      // We explicitly map process.env.API_KEY to the env variable.
+      // Explicitly substitute process.env.API_KEY with the string value from the environment
       'process.env.API_KEY': JSON.stringify(env.API_KEY),
-      // Polyfill process to prevent "process is not defined" errors
-      'process.env': {}, 
     },
   };
 });
