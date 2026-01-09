@@ -72,7 +72,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onNavigat
             active={currentView === AppView.RESUME_REVIEW} 
             onClick={() => onNavigate(AppView.RESUME_REVIEW)} 
             icon={<FileText size={24} />} 
-            label="Review" 
+            label="Debrief" 
           />
         </div>
       </nav>

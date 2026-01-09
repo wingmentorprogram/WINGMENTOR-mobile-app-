@@ -92,22 +92,24 @@ export const generateInterviewAnswers = async (
 };
 
 /**
- * Analyzes a pilot resume or logbook page.
+ * Analyzes a flight grading sheet or exam report.
  */
 export const reviewResume = async (
   imageBase64: string,
   mimeType: string
 ): Promise<ResumeReviewResult> => {
   const ai = getAI();
-  const systemInstruction = `You are a Chief Pilot and Aviation Recruiter.
-  Analyze the provided image (Pilot Resume or Logbook page).
-  Your goal is to help a "Low Timer" pilot stand out.
+  const systemInstruction = `You are a Senior Check Airman and Flight Instructor.
+  Analyze the provided image which is a Flight Grading Sheet, Simulator Evaluation, or Written Exam Report.
+  Your goal is to debrief the student pilot.
   
-  Look for: formatting, clarity of flight hours, highlighting of soft skills/CRM, and professionalism.
-  Rate it out of 10.
-  Identify Strengths and Weaknesses.
-  Give specific improvements to help them get their first job.
-  Be strict but encouraging.`;
+  1. Read the grades and remarks carefully.
+  2. Rate the overall proficiency out of 10 based on the document.
+  3. Identify 'Strong Points': Specific maneuvers, knowledge areas, or CRM skills that received high marks or positive comments.
+  4. Identify 'Weak Points': Specific maneuvers or topics that were unsatisfactory or need improvement.
+  5. Provide 'Improvements': Actionable advice, study topics, or technique tips for the next lesson.
+
+  Be constructive, precise, and professional.`;
 
   try {
     const response = await ai.models.generateContent({
@@ -121,7 +123,7 @@ export const reviewResume = async (
             },
           },
           {
-            text: "Audit this document for a pilot job application. Give me a score, summary, strengths, weaknesses, and improvements.",
+            text: "Analyze this grading sheet or exam report. Provide a score, summary, strong points, weak points, and instructor remarks.",
           },
         ],
       },
@@ -146,7 +148,7 @@ export const reviewResume = async (
     if (!text) throw new Error("No response from AI");
     return JSON.parse(text) as ResumeReviewResult;
   } catch (error) {
-    console.error("Error reviewing resume:", error);
+    console.error("Error reviewing grading sheet:", error);
     throw error;
   }
 };

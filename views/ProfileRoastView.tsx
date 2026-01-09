@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, Camera, CheckCircle, X, Loader2, ThumbsUp, ThumbsDown, Lightbulb, FileText } from 'lucide-react';
+import { Upload, Camera, CheckCircle, X, Loader2, ThumbsUp, ThumbsDown, Lightbulb, FileText, ClipboardCheck } from 'lucide-react';
 import { reviewResume } from '../services/geminiService';
 import { ResumeReviewResult, ImageUpload } from '../types';
 
@@ -43,8 +43,8 @@ export const ProfileRoastView: React.FC = () => {
 
   return (
     <div className="p-4 h-full overflow-y-auto no-scrollbar pb-20">
-      <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2 pt-4 px-2">Document Audit</h2>
-      <p className="text-sm text-slate-500 dark:text-slate-400 px-2 mb-6">Upload your Resume or Logbook page for a recruiter's perspective.</p>
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2 pt-4 px-2">Mentor Tools</h2>
+      <p className="text-sm text-slate-500 dark:text-slate-400 px-2 mb-6">Upload your Flight Grading Sheet or Written Exam Report for a detailed analysis.</p>
       
       {!result ? (
         <div className="flex flex-col items-center justify-center space-y-8 mt-6">
@@ -65,10 +65,10 @@ export const ProfileRoastView: React.FC = () => {
             ) : (
               <div className="text-center p-6">
                 <div className="bg-sky-50 dark:bg-slate-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-sky-500 dark:text-sky-400 group-hover:scale-110 transition-transform">
-                  <FileText size={40} />
+                  <ClipboardCheck size={40} />
                 </div>
-                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">Upload Document</h3>
-                <p className="text-sm text-slate-400 dark:text-slate-500 max-w-[200px] mx-auto">Snap a photo of your logbook or upload a screenshot of your CV.</p>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">Upload Grading Sheet</h3>
+                <p className="text-sm text-slate-400 dark:text-slate-500 max-w-[200px] mx-auto">Take a photo of your sim session grades or exam results.</p>
               </div>
             )}
             <input 
@@ -90,7 +90,7 @@ export const ProfileRoastView: React.FC = () => {
               }`}
           >
              {loading ? <Loader2 className="animate-spin" /> : <CheckCircle />}
-             {loading ? 'Auditing...' : 'Review My Document'}
+             {loading ? 'Analyzing...' : 'Analyze Performance'}
           </button>
         </div>
       ) : (
@@ -98,7 +98,7 @@ export const ProfileRoastView: React.FC = () => {
            {/* Score Card */}
            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden shadow-sm transition-colors">
              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"></div>
-             <span className="text-slate-400 dark:text-slate-500 text-xs uppercase tracking-widest font-bold">Readiness Score</span>
+             <span className="text-slate-400 dark:text-slate-500 text-xs uppercase tracking-widest font-bold">Proficiency Score</span>
              <div className="text-6xl font-black text-slate-800 dark:text-slate-100 mt-2 mb-2">{result.score}<span className="text-3xl text-slate-300 dark:text-slate-600">/10</span></div>
              <p className="text-slate-600 dark:text-slate-300 text-sm font-medium">"{result.summary}"</p>
            </div>
@@ -107,7 +107,7 @@ export const ProfileRoastView: React.FC = () => {
            <div className="grid grid-cols-1 gap-4">
              <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-100 dark:border-emerald-900/50">
                <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold mb-3">
-                 <ThumbsUp size={18} /> Strengths
+                 <ThumbsUp size={18} /> Strong Points
                </div>
                <ul className="space-y-2">
                  {result.strengths.map((p, i) => (
@@ -120,7 +120,7 @@ export const ProfileRoastView: React.FC = () => {
 
              <div className="bg-red-50 dark:bg-red-950/30 rounded-xl p-5 border border-red-100 dark:border-red-900/50">
                <div className="flex items-center gap-2 text-red-700 dark:text-red-400 font-bold mb-3">
-                 <ThumbsDown size={18} /> Improvements Needed
+                 <ThumbsDown size={18} /> Weak Points
                </div>
                <ul className="space-y-2">
                  {result.weaknesses.map((p, i) => (
@@ -136,7 +136,7 @@ export const ProfileRoastView: React.FC = () => {
            <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-sky-200 dark:border-sky-900/50 shadow-sm transition-colors">
              <div className="flex items-center gap-2 text-sky-700 dark:text-sky-400 font-bold mb-3">
                 <Lightbulb size={18} />
-                Fixes & Tips
+                Instructor Remarks
              </div>
              <ul className="space-y-3">
                 {result.improvements.map((t, i) => (
@@ -152,7 +152,7 @@ export const ProfileRoastView: React.FC = () => {
              onClick={() => { setImage(null); setResult(null); }}
              className="w-full py-3 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800 rounded-xl font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
            >
-             Analyze Another Document
+             Analyze Another Sheet
            </button>
         </div>
       )}
