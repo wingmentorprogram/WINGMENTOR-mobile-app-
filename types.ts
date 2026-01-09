@@ -5,6 +5,7 @@ export enum AppView {
   CHAT = 'CHAT',
   MENTOR_COMMUNITY = 'MENTOR_COMMUNITY',
   EXAM_TERMINAL = 'EXAM_TERMINAL',
+  BLACK_BOX = 'BLACK_BOX',
 }
 
 export enum MessageRole {

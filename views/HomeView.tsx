@@ -36,7 +36,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <AppCard 
             image="https://lh3.googleusercontent.com/d/1yLM_bGVPN8Sa__fqR95C0EeA1CUsTAA7"
             title="Black Box DB"
-            onClick={() => onNavigate(AppView.RESUME_REVIEW)}
+            onClick={() => onNavigate(AppView.BLACK_BOX)}
           />
 
           <AppCard 
