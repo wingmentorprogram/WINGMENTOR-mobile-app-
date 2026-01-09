@@ -1,0 +1,7 @@
+{
+  "name": "WingMentor",
+  "description": "The gap between graduation and your career. AI-powered mentorship, resume reviews, and interview preparation for low-time pilots.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
