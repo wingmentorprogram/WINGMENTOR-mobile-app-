@@ -43,14 +43,14 @@ export const ProfileRoastView: React.FC = () => {
 
   return (
     <div className="p-4 h-full overflow-y-auto no-scrollbar pb-20">
-      <h2 className="text-2xl font-bold text-slate-800 mb-2 pt-4 px-2">Document Audit</h2>
-      <p className="text-sm text-slate-500 px-2 mb-6">Upload your Resume or Logbook page for a recruiter's perspective.</p>
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2 pt-4 px-2">Document Audit</h2>
+      <p className="text-sm text-slate-500 dark:text-slate-400 px-2 mb-6">Upload your Resume or Logbook page for a recruiter's perspective.</p>
       
       {!result ? (
         <div className="flex flex-col items-center justify-center space-y-8 mt-6">
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="w-full aspect-[3/4] max-h-96 bg-white rounded-2xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer hover:border-sky-400 transition-colors"
+            className="w-full aspect-[3/4] max-h-96 bg-white dark:bg-slate-900 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer hover:border-sky-400 dark:hover:border-sky-500 transition-colors"
           >
             {image ? (
               <>
@@ -64,11 +64,11 @@ export const ProfileRoastView: React.FC = () => {
               </>
             ) : (
               <div className="text-center p-6">
-                <div className="bg-sky-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-sky-500 group-hover:scale-110 transition-transform">
+                <div className="bg-sky-50 dark:bg-slate-800 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-sky-500 dark:text-sky-400 group-hover:scale-110 transition-transform">
                   <FileText size={40} />
                 </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Upload Document</h3>
-                <p className="text-sm text-slate-400 max-w-[200px] mx-auto">Snap a photo of your logbook or upload a screenshot of your CV.</p>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">Upload Document</h3>
+                <p className="text-sm text-slate-400 dark:text-slate-500 max-w-[200px] mx-auto">Snap a photo of your logbook or upload a screenshot of your CV.</p>
               </div>
             )}
             <input 
@@ -85,8 +85,8 @@ export const ProfileRoastView: React.FC = () => {
             disabled={!image || loading}
             className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-md
               ${!image || loading 
-                ? 'bg-slate-200 text-slate-400' 
-                : 'bg-sky-600 text-white hover:bg-sky-700 active:scale-[0.98]'
+                ? 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-600' 
+                : 'bg-sky-600 dark:bg-sky-600 text-white hover:bg-sky-700 dark:hover:bg-sky-500 active:scale-[0.98]'
               }`}
           >
              {loading ? <Loader2 className="animate-spin" /> : <CheckCircle />}
@@ -96,36 +96,36 @@ export const ProfileRoastView: React.FC = () => {
       ) : (
         <div className="space-y-6 animate-fade-in pb-10">
            {/* Score Card */}
-           <div className="bg-white rounded-2xl p-6 border border-slate-200 text-center relative overflow-hidden shadow-sm">
+           <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden shadow-sm transition-colors">
              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"></div>
-             <span className="text-slate-400 text-xs uppercase tracking-widest font-bold">Readiness Score</span>
-             <div className="text-6xl font-black text-slate-800 mt-2 mb-2">{result.score}<span className="text-3xl text-slate-300">/10</span></div>
-             <p className="text-slate-600 text-sm font-medium">"{result.summary}"</p>
+             <span className="text-slate-400 dark:text-slate-500 text-xs uppercase tracking-widest font-bold">Readiness Score</span>
+             <div className="text-6xl font-black text-slate-800 dark:text-slate-100 mt-2 mb-2">{result.score}<span className="text-3xl text-slate-300 dark:text-slate-600">/10</span></div>
+             <p className="text-slate-600 dark:text-slate-300 text-sm font-medium">"{result.summary}"</p>
            </div>
 
            {/* Strengths & Weaknesses */}
            <div className="grid grid-cols-1 gap-4">
-             <div className="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
-               <div className="flex items-center gap-2 text-emerald-700 font-bold mb-3">
+             <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-100 dark:border-emerald-900/50">
+               <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold mb-3">
                  <ThumbsUp size={18} /> Strengths
                </div>
                <ul className="space-y-2">
                  {result.strengths.map((p, i) => (
-                   <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                     <span className="text-emerald-500 mt-0.5 font-bold">•</span> {p}
+                   <li key={i} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                     <span className="text-emerald-500 dark:text-emerald-400 mt-0.5 font-bold">•</span> {p}
                    </li>
                  ))}
                </ul>
              </div>
 
-             <div className="bg-red-50 rounded-xl p-5 border border-red-100">
-               <div className="flex items-center gap-2 text-red-700 font-bold mb-3">
+             <div className="bg-red-50 dark:bg-red-950/30 rounded-xl p-5 border border-red-100 dark:border-red-900/50">
+               <div className="flex items-center gap-2 text-red-700 dark:text-red-400 font-bold mb-3">
                  <ThumbsDown size={18} /> Improvements Needed
                </div>
                <ul className="space-y-2">
                  {result.weaknesses.map((p, i) => (
-                   <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                     <span className="text-red-500 mt-0.5 font-bold">•</span> {p}
+                   <li key={i} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                     <span className="text-red-500 dark:text-red-400 mt-0.5 font-bold">•</span> {p}
                    </li>
                  ))}
                </ul>
@@ -133,15 +133,15 @@ export const ProfileRoastView: React.FC = () => {
            </div>
 
            {/* Action Plan */}
-           <div className="bg-white rounded-xl p-5 border border-sky-200 shadow-sm">
-             <div className="flex items-center gap-2 text-sky-700 font-bold mb-3">
+           <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-sky-200 dark:border-sky-900/50 shadow-sm transition-colors">
+             <div className="flex items-center gap-2 text-sky-700 dark:text-sky-400 font-bold mb-3">
                 <Lightbulb size={18} />
                 Fixes & Tips
              </div>
              <ul className="space-y-3">
                 {result.improvements.map((t, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-slate-700">
-                    <div className="bg-sky-100 text-sky-700 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">{i+1}</div>
+                  <li key={i} className="flex gap-3 text-sm text-slate-700 dark:text-slate-300">
+                    <div className="bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">{i+1}</div>
                     {t}
                   </li>
                 ))}
@@ -150,7 +150,7 @@ export const ProfileRoastView: React.FC = () => {
            
            <button 
              onClick={() => { setImage(null); setResult(null); }}
-             className="w-full py-3 bg-white text-slate-500 border border-slate-200 rounded-xl font-medium hover:bg-slate-50 transition-colors"
+             className="w-full py-3 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800 rounded-xl font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
            >
              Analyze Another Document
            </button>

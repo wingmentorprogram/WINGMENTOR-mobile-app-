@@ -14,16 +14,16 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         <img 
           src="https://lh3.googleusercontent.com/d/1U7pwMY1-ZsvNYC0Np3fVw5OhW3rTD5DR" 
           alt="WingMentor Logo" 
-          className="h-10 w-auto object-contain drop-shadow-sm"
+          className="h-10 w-auto object-contain drop-shadow-sm dark:brightness-0 dark:invert"
         />
-        <p className="text-slate-400 font-semibold text-[10px] mt-1 tracking-[0.2em] uppercase">Earn Your Career</p>
+        <p className="text-slate-400 dark:text-slate-500 font-semibold text-[10px] mt-1 tracking-[0.2em] uppercase">Earn Your Career</p>
       </div>
 
       {/* App Grid */}
       <div className="mb-4">
-        <h2 className="text-lg font-bold text-slate-800 px-1 mb-2 leading-tight">
+        <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 px-1 mb-2 leading-tight">
           Pilot Apps
-          <span className="block text-[10px] font-medium text-slate-500 mt-0.5 uppercase tracking-wide">Made for Pilots by Pilots</span>
+          <span className="block text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-0.5 uppercase tracking-wide">Made for Pilots by Pilots</span>
         </h2>
         <div className="grid grid-cols-3 gap-3">
           
@@ -70,7 +70,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
       {/* Navigation Hint */}
       <div className="mt-auto flex flex-col items-center justify-center opacity-90 pt-4 pb-2">
-         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 text-center">
+         <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 text-center">
             Press to view pilot tools
          </p>
          <div className="flex flex-col items-center -space-y-3 mb-6">
@@ -83,7 +83,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
          <div className="grid grid-cols-2 gap-4 w-full">
             <button 
               onClick={() => onNavigate(AppView.CHAT)}
-              className="bg-slate-900 rounded-xl p-4 flex flex-col items-center justify-center text-white shadow-lg active:scale-95 transition-all border border-slate-700 relative overflow-hidden group"
+              className="bg-slate-900 dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center text-white shadow-lg active:scale-95 transition-all border border-slate-700 dark:border-slate-600 relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 p-1 opacity-10">
                  <Calculator size={64} />
@@ -95,7 +95,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
             <button 
               onClick={() => onNavigate(AppView.INTERVIEW_PREP)}
-              className="bg-slate-900 rounded-xl p-4 flex flex-col items-center justify-center text-white shadow-lg active:scale-95 transition-all border border-slate-700 relative overflow-hidden group"
+              className="bg-slate-900 dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center text-white shadow-lg active:scale-95 transition-all border border-slate-700 dark:border-slate-600 relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 p-1 opacity-10">
                  <CloudSun size={64} />
@@ -120,8 +120,8 @@ interface AppCardProps {
 const AppCard: React.FC<AppCardProps> = ({ image, title, onClick, imgClassName }) => (
   <button 
     onClick={onClick}
-    className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 group bg-white"
+    className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 group bg-white dark:bg-slate-900"
   >
-    <img src={image} alt={title} className={`w-full h-full object-cover ${imgClassName || ''}`} />
+    <img src={image} alt={title} className={`w-full h-full object-cover ${imgClassName || ''} dark:opacity-90`} />
   </button>
 );

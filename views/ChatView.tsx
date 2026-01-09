@@ -73,15 +73,15 @@ export const ChatView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-50">
-      <div className="px-6 py-4 border-b border-slate-200 bg-white shadow-sm z-10">
-        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+    <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950 transition-colors">
+      <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm z-10 transition-colors">
+        <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
            Mentor Chat
-           <span className="text-xs font-normal text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-100">Live</span>
+           <span className="text-xs font-normal text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/30 px-2 py-0.5 rounded-full border border-sky-100 dark:border-sky-900/50">Live</span>
         </h2>
       </div>
 
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar bg-slate-50">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar bg-slate-50 dark:bg-slate-950 transition-colors">
         {messages.map((msg) => (
           <div 
             key={msg.id} 
@@ -91,7 +91,7 @@ export const ChatView: React.FC = () => {
               className={`max-w-[85%] rounded-2xl p-4 shadow-sm text-sm leading-relaxed whitespace-pre-wrap ${
                 msg.role === MessageRole.USER 
                   ? 'bg-sky-600 text-white rounded-br-none' 
-                  : 'bg-white text-slate-700 rounded-bl-none border border-slate-200'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 rounded-bl-none border border-slate-200 dark:border-slate-800'
               }`}
             >
               {msg.text}
@@ -100,30 +100,30 @@ export const ChatView: React.FC = () => {
         ))}
         {loading && (
            <div className="flex justify-start">
-             <div className="bg-white rounded-2xl rounded-bl-none p-4 border border-slate-200 flex items-center gap-2 shadow-sm">
-               <Loader2 size={16} className="animate-spin text-sky-600" />
-               <span className="text-xs text-slate-500 font-medium">Captain is typing...</span>
+             <div className="bg-white dark:bg-slate-900 rounded-2xl rounded-bl-none p-4 border border-slate-200 dark:border-slate-800 flex items-center gap-2 shadow-sm">
+               <Loader2 size={16} className="animate-spin text-sky-600 dark:text-sky-400" />
+               <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Captain is typing...</span>
              </div>
            </div>
         )}
       </div>
 
-      <div className="p-4 bg-white border-t border-slate-200 pb-safe">
-        <div className="flex items-center gap-2 bg-slate-50 rounded-full border border-slate-200 px-4 py-2 focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-sky-100 transition-all">
+      <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pb-safe transition-colors">
+        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 rounded-full border border-slate-200 dark:border-slate-800 px-4 py-2 focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-sky-100 dark:focus-within:ring-sky-900 transition-all">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask for advice..."
-            className="flex-1 bg-transparent text-slate-900 placeholder-slate-400 outline-none h-10"
+            className="flex-1 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-none h-10"
             disabled={loading}
           />
           <button 
             onClick={handleSend}
             disabled={!input.trim() || loading}
             className={`p-2 rounded-full transition-colors ${
-              input.trim() && !loading ? 'text-sky-600 hover:bg-sky-50' : 'text-slate-300'
+              input.trim() && !loading ? 'text-sky-600 dark:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-900/30' : 'text-slate-300 dark:text-slate-600'
             }`}
           >
             <Send size={20} />
