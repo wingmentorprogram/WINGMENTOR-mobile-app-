@@ -1,8 +1,12 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { InterviewSuggestion, ResumeReviewResult } from "../types";
 
-// Initialize the client. API_KEY is assumed to be available in the environment.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Helper to lazy-load the client. Prevents white-screen crash on app load if API_KEY is missing.
+const getAI = () => {
+  // Use the injected process.env.API_KEY. Fallback to a placeholder if missing to allow app to render.
+  const apiKey = process.env.API_KEY || 'MISSING_KEY'; 
+  return new GoogleGenAI({ apiKey });
+};
 
 // Models
 const TEXT_MODEL = 'gemini-3-flash-preview';
@@ -17,6 +21,7 @@ export const generateInterviewAnswers = async (
   mimeType?: string
 ): Promise<InterviewSuggestion[]> => {
   const model = imageBase64 ? IMAGE_MODEL : TEXT_MODEL;
+  const ai = getAI();
   
   const systemInstruction = `You are a Senior Airline Captain and Pilot Career Mentor. 
   Your goal is to help low-time pilots with interviews, technical knowledge, and weather analysis.
@@ -93,6 +98,7 @@ export const reviewResume = async (
   imageBase64: string,
   mimeType: string
 ): Promise<ResumeReviewResult> => {
+  const ai = getAI();
   const systemInstruction = `You are a Chief Pilot and Aviation Recruiter.
   Analyze the provided image (Pilot Resume or Logbook page).
   Your goal is to help a "Low Timer" pilot stand out.
@@ -152,6 +158,7 @@ export const sendChatMessage = async (
   history: { role: string; parts: { text: string }[] }[],
   newMessage: string
 ) => {
+  const ai = getAI();
   try {
     const chat = ai.chats.create({
       model: TEXT_MODEL,
