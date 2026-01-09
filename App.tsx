@@ -7,6 +7,7 @@ import { ChatView } from './views/ChatView';
 import { MentorCommunityView } from './views/MentorCommunityView';
 import { ExamTerminalView } from './views/ExamTerminalView';
 import { BlackBoxView } from './views/BlackBoxView';
+import { WeightBalanceView } from './views/WeightBalanceView';
 import { AppView } from './types';
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
         return <ExamTerminalView />;
       case AppView.BLACK_BOX:
         return <BlackBoxView />;
+      case AppView.WEIGHT_BALANCE:
+        return <WeightBalanceView />;
       default:
         return <HomeView onNavigate={setCurrentView} />;
     }

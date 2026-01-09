@@ -6,6 +6,7 @@ export enum AppView {
   MENTOR_COMMUNITY = 'MENTOR_COMMUNITY',
   EXAM_TERMINAL = 'EXAM_TERMINAL',
   BLACK_BOX = 'BLACK_BOX',
+  WEIGHT_BALANCE = 'WEIGHT_BALANCE',
 }
 
 export enum MessageRole {

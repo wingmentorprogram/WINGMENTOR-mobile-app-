@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppView } from '../types';
-import { ChevronDown, Calculator, CloudSun } from 'lucide-react';
+import { ChevronDown, Calculator, CloudSun, Scale } from 'lucide-react';
 
 interface HomeViewProps {
   onNavigate: (view: AppView) => void;
@@ -49,7 +49,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
            <AppCard 
             image="https://lh3.googleusercontent.com/d/1GbUopHNGyXMhzi5sW1Ybo5gZMh2_YSKN"
             title="Program Handbook"
-            onClick={() => onNavigate(AppView.RESUME_REVIEW)}
+            href="https://programhandbook.vercel.app"
           />
 
            <AppCard 
@@ -103,6 +103,18 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               <CloudSun className="text-yellow-400 mb-2 group-hover:scale-110 transition-transform" size={28} />
               <span className="text-xs font-bold uppercase tracking-wider text-center z-10">Weather</span>
               <span className="text-[10px] text-slate-400 font-medium z-10">Translator</span>
+            </button>
+
+            <button 
+              onClick={() => onNavigate(AppView.WEIGHT_BALANCE)}
+              className="col-span-2 bg-slate-900 dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center text-white shadow-lg active:scale-95 transition-all border border-slate-700 dark:border-slate-600 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 p-1 opacity-10">
+                 <Scale size={64} />
+              </div>
+              <Scale className="text-yellow-400 mb-2 group-hover:scale-110 transition-transform" size={28} />
+              <span className="text-xs font-bold uppercase tracking-wider text-center z-10">Weight & Balance</span>
+              <span className="text-[10px] text-slate-400 font-medium z-10">Performance Calc</span>
             </button>
          </div>
       </div>
